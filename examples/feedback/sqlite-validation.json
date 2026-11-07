@@ -1,0 +1,30 @@
+{
+  "storage": "runtime/feedback-validation.sqlite3",
+  "schema_version": 1,
+  "first_write": {
+    "status": "feedback_recorded",
+    "inserted": true
+  },
+  "idempotent_retry": {
+    "status": "feedback_duplicate",
+    "inserted": false
+  },
+  "summary": {
+    "total": 1,
+    "by_rating": {
+      "unhelpful": 1
+    },
+    "by_attribution": {
+      "citation_quality": 1
+    },
+    "by_status": {
+      "completed": 1
+    }
+  },
+  "jsonl_migration": {
+    "source": "examples/feedback/sample-feedback.jsonl",
+    "total": 1,
+    "inserted": 1,
+    "duplicates": 0
+  }
+}

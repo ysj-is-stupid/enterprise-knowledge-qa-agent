@@ -1,0 +1,86 @@
+{
+  "trace_version": "1.0",
+  "mode": "live_model",
+  "original_question": "报销期限多久？",
+  "standalone_query": "报销期限多久？",
+  "route": "knowledge_query",
+  "access_context": {
+    "departments": [
+      "public"
+    ],
+    "as_of_date": "2026-11-07"
+  },
+  "resolution_note": "无可用历史，问题独立且为业务事实查询，直接路由知识库。 历史上下文采用可溯源记忆检索，召回旧消息索引：[]。",
+  "history_context": {
+    "memory_strategy": "provenance_preserving_episodic_retrieval_v1",
+    "retrieved_message_indexes": [],
+    "recent_message_indexes": []
+  },
+  "limits": {
+    "max_decision_steps": 10,
+    "max_tool_calls": 8
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "arguments": {
+        "query": "报销期限",
+        "top_k": 10
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "找到 2 份候选: D01(0.715), D02(0.715)",
+      "next_action": "read_doc",
+      "decision_steps_remaining": 9,
+      "tool_calls_remaining": 7
+    },
+    {
+      "step": 2,
+      "action": "read_doc",
+      "arguments": {
+        "document_id": "D01",
+        "chunk_id": "D01-C01"
+      },
+      "rationale": "模型返回 2 个并行工具调用；执行器按 ReAct 单步协议先执行第一个，其余动作需在观察结果后重新决策。",
+      "observation_summary": "读取 D01/D01-C01: 员工应在费用发生之日起30天内提交报销。",
+      "next_action": "read_doc",
+      "decision_steps_remaining": 8,
+      "tool_calls_remaining": 6
+    },
+    {
+      "step": 3,
+      "action": "read_doc",
+      "arguments": {
+        "document_id": "D02",
+        "chunk_id": "D02-C01"
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "读取 D02/D02-C01: 员工费用应在发生之日起15天内完成报销提交。",
+      "next_action": "ask_user",
+      "decision_steps_remaining": 7,
+      "tool_calls_remaining": 5
+    },
+    {
+      "step": 4,
+      "action": "ask_user",
+      "arguments": {
+        "question": "关于报销提交期限，两份制度规定不一致：《员工费用报销制度》（2025-01-01生效）要求费用发生之日起30天内提交报销；《费用报销补充规定》（2025-06-15生效）要求15天内完成报销提交。两者适用范围均为全部员工、全部地区、全部业务，且冲突未裁决。请问应以哪一份为准？",
+        "gap_codes": [
+          "unresolved_conflict"
+        ],
+        "conflict_ids": [
+          "CF1"
+        ]
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "需要用户补充信息，当前任务停止。",
+      "next_action": null,
+      "decision_steps_remaining": 6,
+      "tool_calls_remaining": 5
+    }
+  ],
+  "final_status": "needs_clarification",
+  "tool_calls_used": 3,
+  "decision_steps_used": 4,
+  "run_id": "run_cf21472bae748495"
+}

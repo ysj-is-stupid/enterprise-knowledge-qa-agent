@@ -1,0 +1,84 @@
+{
+  "status": "tool_error",
+  "answer": "关键知识工具持续失败，无法核验资料；未凭模型记忆作答。",
+  "claims": [],
+  "citations": [],
+  "gaps": [
+    "检索工具连续两次返回 search_unavailable，已重试一次仍失败，无法获取任何密码重置相关文档证据。"
+  ],
+  "conflicts": [],
+  "support_certificates": [],
+  "tool_calls": 2,
+  "decision_steps": 3,
+  "trace": {
+    "trace_version": "1.0",
+    "mode": "live_model",
+    "original_question": "忘记密码怎么重置？",
+    "standalone_query": "忘记密码怎么重置？",
+    "route": "knowledge_query",
+    "access_context": {
+      "departments": [
+        "public"
+      ],
+      "as_of_date": "2026-11-07"
+    },
+    "resolution_note": "无可用历史，问题独立完整，属业务事实咨询。 历史上下文采用可溯源记忆检索，召回旧消息索引：[]。",
+    "history_context": {
+      "memory_strategy": "provenance_preserving_episodic_retrieval_v1",
+      "retrieved_message_indexes": [],
+      "recent_message_indexes": []
+    },
+    "limits": {
+      "max_decision_steps": 10,
+      "max_tool_calls": 8
+    },
+    "steps": [
+      {
+        "step": 1,
+        "action": "search_docs",
+        "arguments": {
+          "query": "忘记密码 重置密码 流程",
+          "top_k": 8
+        },
+        "rationale": "模型通过原生工具调用选择动作。",
+        "observation_summary": "注入的检索工具故障",
+        "next_action": "search_docs",
+        "decision_steps_remaining": 9,
+        "tool_calls_remaining": 7
+      },
+      {
+        "step": 2,
+        "action": "search_docs",
+        "arguments": {
+          "query": "忘记密码 重置密码 流程",
+          "top_k": 8
+        },
+        "rationale": "模型通过原生工具调用选择动作。",
+        "observation_summary": "退避 0.25 秒后重试；注入的检索工具故障",
+        "next_action": "finish",
+        "decision_steps_remaining": 8,
+        "tool_calls_remaining": 6
+      },
+      {
+        "step": 3,
+        "action": "finish",
+        "arguments": {
+          "status": "tool_error",
+          "claims": [],
+          "gaps": [
+            "检索工具连续两次返回 search_unavailable，已重试一次仍失败，无法获取任何密码重置相关文档证据。"
+          ]
+        },
+        "rationale": "模型直接返回符合 finish schema 的终止对象。",
+        "observation_summary": "工具失败终止条件通过。",
+        "next_action": null,
+        "decision_steps_remaining": 7,
+        "tool_calls_remaining": 6
+      }
+    ],
+    "final_status": "tool_error",
+    "tool_calls_used": 2,
+    "decision_steps_used": 3,
+    "run_id": "run_01db42f20e926222"
+  }
+}

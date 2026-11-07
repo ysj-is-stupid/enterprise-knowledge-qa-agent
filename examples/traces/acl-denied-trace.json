@@ -1,0 +1,71 @@
+{
+  "trace_version": "1.0",
+  "mode": "offline_mock",
+  "original_question": "年度薪酬调整需要什么审批？",
+  "standalone_query": "年度薪酬调整需要什么审批？",
+  "route": "knowledge_query",
+  "access_context": {
+    "departments": [
+      "sales"
+    ],
+    "as_of_date": "2026-11-07"
+  },
+  "resolution_note": "问题本身信息完整。",
+  "history_context": {
+    "memory_strategy": "none",
+    "retrieved_message_indexes": [],
+    "recent_message_indexes": []
+  },
+  "limits": {
+    "max_decision_steps": 10,
+    "max_tool_calls": 8
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "arguments": {
+        "query": "年度薪酬调整需要什么审批？",
+        "top_k": 5
+      },
+      "rationale": "当前没有证据，需要先检索企业资料。",
+      "observation_summary": "未找到达到阈值的候选文档",
+      "next_action": "search_docs",
+      "decision_steps_remaining": 9,
+      "tool_calls_remaining": 7
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "arguments": {
+        "query": "年度薪酬调整需要什么审批？ 相关制度 规则 原文",
+        "top_k": 5
+      },
+      "rationale": "首次检索没有有效候选，扩大查询后再检索一次。",
+      "observation_summary": "未找到达到阈值的候选文档",
+      "next_action": "finish",
+      "decision_steps_remaining": 8,
+      "tool_calls_remaining": 6
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "gaps": [
+          "知识库缺少该问题的相关制度或产品资料。"
+        ]
+      },
+      "rationale": "补充检索仍无有效证据，应明确报告资料缺口。",
+      "observation_summary": "资料不足终止条件通过。",
+      "next_action": null,
+      "decision_steps_remaining": 7,
+      "tool_calls_remaining": 6
+    }
+  ],
+  "final_status": "insufficient_evidence",
+  "tool_calls_used": 2,
+  "decision_steps_used": 3,
+  "run_id": "run_663443d78a60e158"
+}

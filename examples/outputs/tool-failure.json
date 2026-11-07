@@ -1,0 +1,88 @@
+{
+  "status": "tool_error",
+  "answer": "关键知识工具持续失败，无法核验资料；未凭模型记忆作答。",
+  "claims": [],
+  "citations": [],
+  "gaps": [
+    "关键知识工具持续失败，无法核验资料。"
+  ],
+  "conflicts": [],
+  "support_certificates": [],
+  "tool_calls": 2,
+  "decision_steps": 3,
+  "trace": {
+    "trace_version": "1.0",
+    "mode": "offline_mock",
+    "original_question": "忘记密码怎么重置？",
+    "standalone_query": "忘记密码怎么重置？",
+    "route": "knowledge_query",
+    "access_context": {
+      "departments": [
+        "public"
+      ],
+      "as_of_date": "2026-11-07"
+    },
+    "resolution_note": "问题本身信息完整。",
+    "history_context": {
+      "memory_strategy": "none",
+      "retrieved_message_indexes": [],
+      "recent_message_indexes": []
+    },
+    "limits": {
+      "max_decision_steps": 10,
+      "max_tool_calls": 8
+    },
+    "steps": [
+      {
+        "step": 1,
+        "action": "search_docs",
+        "arguments": {
+          "query": "忘记密码怎么重置？",
+          "top_k": 5
+        },
+        "rationale": "当前没有证据，需要先检索企业资料。",
+        "observation_summary": "注入的检索工具故障",
+        "next_action": "search_docs",
+        "decision_steps_remaining": 9,
+        "tool_calls_remaining": 7
+      },
+      {
+        "step": 2,
+        "action": "search_docs",
+        "arguments": {
+          "query": "忘记密码怎么重置？",
+          "top_k": 5,
+          "requester_departments": [
+            "public"
+          ],
+          "as_of_date": "2026-11-07"
+        },
+        "rationale": "工具返回可重试错误，重试一次以确认是否为暂时故障。",
+        "observation_summary": "退避 0.25 秒后重试；注入的检索工具故障",
+        "next_action": "finish",
+        "decision_steps_remaining": 8,
+        "tool_calls_remaining": 6
+      },
+      {
+        "step": 3,
+        "action": "finish",
+        "arguments": {
+          "status": "tool_error",
+          "claims": [],
+          "gaps": [
+            "关键知识工具持续失败，无法核验资料。"
+          ]
+        },
+        "rationale": "工具重试后仍失败，不能凭记忆回答。",
+        "observation_summary": "工具失败终止条件通过。",
+        "next_action": null,
+        "decision_steps_remaining": 7,
+        "tool_calls_remaining": 6
+      }
+    ],
+    "final_status": "tool_error",
+    "tool_calls_used": 2,
+    "decision_steps_used": 3,
+    "run_id": "run_ca5da923dc364e3f"
+  }
+}

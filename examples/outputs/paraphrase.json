@@ -1,0 +1,120 @@
+{
+  "status": "completed",
+  "answer": "公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。[C1]",
+  "claims": [
+    {
+      "text": "公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。",
+      "citation_ids": [
+        "C1"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "C1",
+      "document_id": "D04",
+      "version_date": "2026-03-10",
+      "effective_from": "2026-03-10",
+      "effective_to": null,
+      "chunk_id": "D04-C01",
+      "quote": "公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。"
+    }
+  ],
+  "gaps": [],
+  "conflicts": [],
+  "support_certificates": [
+    {
+      "claim_index": 1,
+      "claim_text": "公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。",
+      "evidence_ids": [
+        "C1"
+      ],
+      "proof_methods": [
+        "verbatim_clause"
+      ],
+      "matched_source_clauses": [
+        "公司采购的标准设备自签收之日起享有12个月质保；",
+        "发生故障时应通过服务台提交维修申请。"
+      ],
+      "normalized_claim": "公司采购的标准设备自签收之日起享有<duration:12:month>质保;发生故障时应通过服务台提交维修申请"
+    }
+  ],
+  "tool_calls": 2,
+  "decision_steps": 3,
+  "trace": {
+    "trace_version": "1.0",
+    "mode": "offline_mock",
+    "original_question": "买的设备坏了怎么办？",
+    "standalone_query": "买的设备坏了怎么办？",
+    "route": "knowledge_query",
+    "access_context": {
+      "departments": [
+        "public"
+      ],
+      "as_of_date": "2026-11-07"
+    },
+    "resolution_note": "问题本身信息完整。",
+    "history_context": {
+      "memory_strategy": "none",
+      "retrieved_message_indexes": [],
+      "recent_message_indexes": []
+    },
+    "limits": {
+      "max_decision_steps": 10,
+      "max_tool_calls": 8
+    },
+    "steps": [
+      {
+        "step": 1,
+        "action": "search_docs",
+        "arguments": {
+          "query": "买的设备坏了怎么办？",
+          "top_k": 5
+        },
+        "rationale": "当前没有证据，需要先检索企业资料。",
+        "observation_summary": "找到 1 份候选: D04(0.326)",
+        "next_action": "read_doc",
+        "decision_steps_remaining": 9,
+        "tool_calls_remaining": 7
+      },
+      {
+        "step": 2,
+        "action": "read_doc",
+        "arguments": {
+          "document_id": "D04",
+          "chunk_id": "D04-C01"
+        },
+        "rationale": "最高相关候选尚未核验，需要读取原文。",
+        "observation_summary": "读取 D04/D04-C01: 公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。",
+        "next_action": "finish",
+        "decision_steps_remaining": 8,
+        "tool_calls_remaining": 6
+      },
+      {
+        "step": 3,
+        "action": "finish",
+        "arguments": {
+          "status": "completed",
+          "claims": [
+            {
+              "text": "公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。",
+              "evidence_ids": [
+                "E1"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        "rationale": "已读取相关原文，证据覆盖问题且没有未裁决冲突。",
+        "observation_summary": "完成校验通过；1 条声明均生成逐句支持证书。",
+        "next_action": null,
+        "decision_steps_remaining": 7,
+        "tool_calls_remaining": 6
+      }
+    ],
+    "final_status": "completed",
+    "tool_calls_used": 2,
+    "decision_steps_used": 3,
+    "run_id": "run_cc0c110e626def04"
+  }
+}

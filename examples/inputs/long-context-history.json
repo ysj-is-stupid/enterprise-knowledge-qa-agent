@@ -1,0 +1,18 @@
+[
+  {"role": "user", "content": "远程办公制度适用于哪些员工？"},
+  {"role": "assistant", "content": "我会核验远程办公制度。"},
+  {"role": "user", "content": "设备质保期是多久？"},
+  {"role": "assistant", "content": "我会核验设备资料。"},
+  {"role": "user", "content": "密码如何重置？"},
+  {"role": "assistant", "content": "我会核验账号资料。"},
+  {"role": "user", "content": "报销期限如何规定？"},
+  {"role": "assistant", "content": "我会核验报销制度。"},
+  {"role": "user", "content": "好的"},
+  {"role": "assistant", "content": "请继续。"},
+  {"role": "user", "content": "谢谢"},
+  {"role": "assistant", "content": "不客气。"},
+  {"role": "user", "content": "明白了"},
+  {"role": "assistant", "content": "请继续提问。"},
+  {"role": "user", "content": "好的"},
+  {"role": "assistant", "content": "请继续。"}
+]

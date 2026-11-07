@@ -1,0 +1,158 @@
+[
+  {
+    "document_id": "D01",
+    "title": "员工费用报销制度",
+    "version_date": "2025-01-01",
+    "effective_from": "2025-01-01",
+    "effective_to": null,
+    "topic": "expense_reimbursement",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["报销", "费用", "提交期限"],
+    "chunks": [
+      {
+        "chunk_id": "D01-C01",
+        "section": "提交期限",
+        "rule_key": "expense.submission_deadline",
+        "keywords": ["报销期限", "30天"],
+        "text": "员工应在费用发生之日起30天内提交报销。"
+      }
+    ]
+  },
+  {
+    "document_id": "D02",
+    "title": "费用报销补充规定",
+    "version_date": "2025-06-15",
+    "effective_from": "2025-06-15",
+    "effective_to": null,
+    "topic": "expense_reimbursement",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["报销", "费用", "期限"],
+    "chunks": [
+      {
+        "chunk_id": "D02-C01",
+        "section": "报销时限",
+        "rule_key": "expense.submission_deadline",
+        "keywords": ["报销期限", "15天"],
+        "text": "员工费用应在发生之日起15天内完成报销提交。"
+      }
+    ]
+  },
+  {
+    "document_id": "D03",
+    "title": "远程办公管理办法",
+    "version_date": "2026-02-01",
+    "effective_from": "2026-02-01",
+    "effective_to": null,
+    "topic": "remote_work",
+    "scope": {
+      "employee_types": ["正式员工", "试用期员工"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["远程办公", "居家办公", "试用期"],
+    "chunks": [
+      {
+        "chunk_id": "D03-C01",
+        "section": "适用人员",
+        "rule_key": "remote_work.eligibility",
+        "keywords": ["正式员工", "试用期员工"],
+        "text": "完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。"
+      }
+    ]
+  },
+  {
+    "document_id": "D04",
+    "title": "企业设备质保说明",
+    "version_date": "2026-03-10",
+    "effective_from": "2026-03-10",
+    "effective_to": null,
+    "topic": "product_warranty",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["company_device"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["设备", "故障", "质保", "保修"],
+    "chunks": [
+      {
+        "chunk_id": "D04-C01",
+        "section": "质保期限与申请",
+        "rule_key": "device.warranty_period",
+        "keywords": ["产品坏了", "设备故障", "12个月"],
+        "text": "公司采购的标准设备自签收之日起享有12个月质保；发生故障时应通过服务台提交维修申请。"
+      }
+    ]
+  },
+  {
+    "document_id": "D05",
+    "title": "账号密码自助重置 FAQ",
+    "version_date": "2026-04-01",
+    "effective_from": "2026-04-01",
+    "effective_to": null,
+    "topic": "account_password",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["密码", "账号", "忘记密码", "重置"],
+    "chunks": [
+      {
+        "chunk_id": "D05-C01",
+        "section": "忘记密码",
+        "rule_key": "account.password_reset",
+        "keywords": ["密码重置", "登录"],
+        "text": "员工忘记密码时，应在统一登录页选择“忘记密码”，通过企业邮箱验证码完成自助重置。"
+      }
+    ]
+  },
+  {
+    "document_id": "D06",
+    "title": "人力资源薪酬调整细则",
+    "version_date": "2026-05-01",
+    "effective_from": "2026-05-01",
+    "effective_to": null,
+    "topic": "salary_adjustment",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "access_control": {"departments": ["hr"]},
+    "keywords": ["薪酬", "调薪", "审批", "人力资源"],
+    "chunks": [
+      {
+        "chunk_id": "D06-C01",
+        "section": "审批要求",
+        "rule_key": "salary.adjustment_approval",
+        "keywords": ["薪酬调整", "审批"],
+        "text": "年度薪酬调整方案须经人力资源负责人和财务负责人共同审批。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "case_id": "tool-failure",
+  "question": "忘记密码怎么重置？",
+  "mode": "offline",
+  "failure_injection": {
+    "tool": "search_docs",
+    "count": 2
+  }
+}

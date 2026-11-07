@@ -1,0 +1,6 @@
+{
+  "case_id": "acl-denied",
+  "question": "年度薪酬调整需要什么审批？",
+  "departments": ["sales"],
+  "mode": "offline"
+}

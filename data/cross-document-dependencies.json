@@ -1,0 +1,59 @@
+[
+  {
+    "document_id": "D20",
+    "title": "设备借用申请办法",
+    "version_date": "2026-01-01",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "topic": "device_borrowing",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "rule_overrides": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["设备借用", "申请条件"],
+    "chunks": [
+      {
+        "chunk_id": "D20-C01",
+        "section": "申请条件",
+        "rule_key": "device_borrowing.application",
+        "keywords": ["设备借用", "申请条件"],
+        "required_evidence_refs": [
+          {"document_id": "D21", "chunk_id": "D21-C01"}
+        ],
+        "text": "设备借用资格以关联资格标准为准。"
+      }
+    ]
+  },
+  {
+    "document_id": "D21",
+    "title": "人员资格基线附录",
+    "version_date": "2026-01-01",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "topic": "eligibility_baseline",
+    "scope": {
+      "employee_types": ["all"],
+      "regions": ["all"],
+      "business_types": ["all"]
+    },
+    "priority": null,
+    "supersedes": [],
+    "rule_overrides": [],
+    "access_control": {"departments": ["all"]},
+    "keywords": ["连续任职", "安全培训"],
+    "chunks": [
+      {
+        "chunk_id": "D21-C01",
+        "section": "资格基线",
+        "rule_key": "employee.eligibility_baseline",
+        "keywords": ["连续任职", "安全培训"],
+        "text": "申请人须连续任职满6个月并完成安全培训。"
+      }
+    ]
+  }
+]

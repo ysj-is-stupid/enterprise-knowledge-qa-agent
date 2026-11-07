@@ -1,0 +1,87 @@
+{
+  "trace_version": "1.0",
+  "mode": "live_model",
+  "original_question": "公司食堂明天吃什么？",
+  "standalone_query": "公司食堂明天吃什么？",
+  "route": "knowledge_query",
+  "access_context": {
+    "departments": [
+      "public"
+    ],
+    "as_of_date": "2026-11-07"
+  },
+  "resolution_note": "无可用历史，问题独立完整，属于需查询业务事实的问题。 历史上下文采用可溯源记忆检索，召回旧消息索引：[]。",
+  "history_context": {
+    "memory_strategy": "provenance_preserving_episodic_retrieval_v1",
+    "retrieved_message_indexes": [],
+    "recent_message_indexes": []
+  },
+  "limits": {
+    "max_decision_steps": 10,
+    "max_tool_calls": 8
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "arguments": {
+        "query": "公司食堂菜单 明天",
+        "top_k": 10
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "未找到达到阈值的候选文档",
+      "next_action": "finish",
+      "decision_steps_remaining": 9,
+      "tool_calls_remaining": 7
+    },
+    {
+      "step": 2,
+      "action": "finish",
+      "arguments": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "gaps": [
+          "知识库中未检索到公司食堂菜单相关文档，无法回答明天吃什么"
+        ]
+      },
+      "rationale": "模型直接返回符合 finish schema 的终止对象。",
+      "observation_summary": "完成校验未通过: 报告资料不足前需要执行至少两个不同查询。",
+      "next_action": "search_docs",
+      "decision_steps_remaining": 8,
+      "tool_calls_remaining": 7
+    },
+    {
+      "step": 3,
+      "action": "search_docs",
+      "arguments": {
+        "query": "食堂 菜单 餐食安排",
+        "top_k": 10
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "未找到达到阈值的候选文档",
+      "next_action": "finish",
+      "decision_steps_remaining": 7,
+      "tool_calls_remaining": 6
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "status": "insufficient_evidence",
+        "claims": [],
+        "gaps": [
+          "知识库中未检索到公司食堂菜单或餐食安排相关文档，无法回答明天吃什么"
+        ]
+      },
+      "rationale": "模型直接返回符合 finish schema 的终止对象。",
+      "observation_summary": "资料不足终止条件通过。",
+      "next_action": null,
+      "decision_steps_remaining": 6,
+      "tool_calls_remaining": 6
+    }
+  ],
+  "final_status": "insufficient_evidence",
+  "tool_calls_used": 2,
+  "decision_steps_used": 4,
+  "run_id": "run_d6e37c7c6070fa86"
+}

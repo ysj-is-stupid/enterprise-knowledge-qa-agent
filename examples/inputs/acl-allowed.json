@@ -1,0 +1,6 @@
+{
+  "case_id": "acl-allowed",
+  "question": "年度薪酬调整需要什么审批？",
+  "departments": ["hr"],
+  "mode": "offline"
+}

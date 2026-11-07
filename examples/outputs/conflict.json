@@ -1,0 +1,139 @@
+{
+  "status": "needs_clarification",
+  "answer": "发现无法自动裁决的资料冲突：D01（适用范围：员工=全部;地区=全部;业务=全部）：员工应在费用发生之日起30天内提交报销。[C1]；D02（适用范围：员工=全部;地区=全部;业务=全部）：员工费用应在发生之日起15天内完成报销提交。[C2] 检索到无法自动裁决的制度冲突，请确认适用制度、人员范围或业务场景。",
+  "claims": [],
+  "citations": [
+    {
+      "citation_id": "C1",
+      "document_id": "D01",
+      "version_date": "2025-01-01",
+      "effective_from": "2025-01-01",
+      "effective_to": null,
+      "chunk_id": "D01-C01",
+      "quote": "员工应在费用发生之日起30天内提交报销。"
+    },
+    {
+      "citation_id": "C2",
+      "document_id": "D02",
+      "version_date": "2025-06-15",
+      "effective_from": "2025-06-15",
+      "effective_to": null,
+      "chunk_id": "D02-C01",
+      "quote": "员工费用应在发生之日起15天内完成报销提交。"
+    }
+  ],
+  "gaps": [
+    "applicable_policy_unknown"
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "CF1",
+      "rule_key": "expense.submission_deadline",
+      "evidence_ids": [
+        "C1",
+        "C2"
+      ],
+      "values": [
+        "期限: 30自然日",
+        "期限: 15自然日"
+      ],
+      "description": "D01 与 D02 对 expense.submission_deadline 在期限维度给出不一致规则。",
+      "resolution_status": "unresolved",
+      "resolution_basis": null,
+      "selected_evidence_ids": [],
+      "scope_summaries": [
+        "员工=全部;地区=全部;业务=全部",
+        "员工=全部;地区=全部;业务=全部"
+      ]
+    }
+  ],
+  "support_certificates": [],
+  "tool_calls": 3,
+  "decision_steps": 4,
+  "trace": {
+    "trace_version": "1.0",
+    "mode": "offline_mock",
+    "original_question": "报销期限多久？",
+    "standalone_query": "报销期限多久？",
+    "route": "knowledge_query",
+    "access_context": {
+      "departments": [
+        "public"
+      ],
+      "as_of_date": "2026-11-07"
+    },
+    "resolution_note": "问题本身信息完整。",
+    "history_context": {
+      "memory_strategy": "none",
+      "retrieved_message_indexes": [],
+      "recent_message_indexes": []
+    },
+    "limits": {
+      "max_decision_steps": 10,
+      "max_tool_calls": 8
+    },
+    "steps": [
+      {
+        "step": 1,
+        "action": "search_docs",
+        "arguments": {
+          "query": "报销期限多久？",
+          "top_k": 5
+        },
+        "rationale": "当前没有证据，需要先检索企业资料。",
+        "observation_summary": "找到 2 份候选: D01(0.526), D02(0.526)",
+        "next_action": "read_doc",
+        "decision_steps_remaining": 9,
+        "tool_calls_remaining": 7
+      },
+      {
+        "step": 2,
+        "action": "read_doc",
+        "arguments": {
+          "document_id": "D01",
+          "chunk_id": "D01-C01"
+        },
+        "rationale": "最高相关候选尚未核验，需要读取原文。",
+        "observation_summary": "读取 D01/D01-C01: 员工应在费用发生之日起30天内提交报销。",
+        "next_action": "read_doc",
+        "decision_steps_remaining": 8,
+        "tool_calls_remaining": 6
+      },
+      {
+        "step": 3,
+        "action": "read_doc",
+        "arguments": {
+          "document_id": "D02",
+          "chunk_id": "D02-C01"
+        },
+        "rationale": "搜索结果还有同主题高相关候选，需要读取以排除制度冲突。",
+        "observation_summary": "读取 D02/D02-C01: 员工费用应在发生之日起15天内完成报销提交。",
+        "next_action": "ask_user",
+        "decision_steps_remaining": 7,
+        "tool_calls_remaining": 5
+      },
+      {
+        "step": 4,
+        "action": "ask_user",
+        "arguments": {
+          "question": "检索到无法自动裁决的制度冲突，请确认适用制度、人员范围或业务场景。",
+          "gap_codes": [
+            "applicable_policy_unknown"
+          ],
+          "conflict_ids": [
+            "CF1"
+          ]
+        },
+        "rationale": "已读原文存在不兼容规则，且没有替代关系或显式优先级。",
+        "observation_summary": "需要用户补充信息，当前任务停止。",
+        "next_action": null,
+        "decision_steps_remaining": 6,
+        "tool_calls_remaining": 5
+      }
+    ],
+    "final_status": "needs_clarification",
+    "tool_calls_used": 3,
+    "decision_steps_used": 4,
+    "run_id": "run_e3a5b43c1257442d"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "trace_version": "1.0",
+  "mode": "offline_mock",
+  "original_question": "忘记密码怎么重置？",
+  "standalone_query": "忘记密码怎么重置？",
+  "route": "knowledge_query",
+  "access_context": {
+    "departments": [
+      "public"
+    ],
+    "as_of_date": "2026-11-07"
+  },
+  "resolution_note": "问题本身信息完整。",
+  "history_context": {
+    "memory_strategy": "none",
+    "retrieved_message_indexes": [],
+    "recent_message_indexes": []
+  },
+  "limits": {
+    "max_decision_steps": 10,
+    "max_tool_calls": 8
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "arguments": {
+        "query": "忘记密码怎么重置？",
+        "top_k": 5
+      },
+      "rationale": "当前没有证据，需要先检索企业资料。",
+      "observation_summary": "找到 1 份候选: D05(0.529)",
+      "next_action": "read_doc",
+      "decision_steps_remaining": 9,
+      "tool_calls_remaining": 7
+    },
+    {
+      "step": 2,
+      "action": "read_doc",
+      "arguments": {
+        "document_id": "D05",
+        "chunk_id": "D05-C01"
+      },
+      "rationale": "最高相关候选尚未核验，需要读取原文。",
+      "observation_summary": "读取 D05/D05-C01: 员工忘记密码时，应在统一登录页选择“忘记密码”，通过企业邮箱验证码完成自助重置。",
+      "next_action": "finish",
+      "decision_steps_remaining": 8,
+      "tool_calls_remaining": 6
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "arguments": {
+        "status": "completed",
+        "claims": [
+          {
+            "text": "员工忘记密码时，应在统一登录页选择“忘记密码”，通过企业邮箱验证码完成自助重置。",
+            "evidence_ids": [
+              "E1"
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "rationale": "已读取相关原文，证据覆盖问题且没有未裁决冲突。",
+      "observation_summary": "完成校验通过；1 条声明均生成逐句支持证书。",
+      "next_action": null,
+      "decision_steps_remaining": 7,
+      "tool_calls_remaining": 6
+    }
+  ],
+  "final_status": "completed",
+  "tool_calls_used": 2,
+  "decision_steps_used": 3,
+  "run_id": "run_bc3e3c04508f0e61"
+}

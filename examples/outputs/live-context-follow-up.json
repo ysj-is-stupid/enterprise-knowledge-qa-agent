@@ -1,0 +1,123 @@
+{
+  "status": "completed",
+  "answer": "完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。[C1]",
+  "claims": [
+    {
+      "text": "完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。",
+      "citation_ids": [
+        "C1"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "C1",
+      "document_id": "D03",
+      "version_date": "2026-02-01",
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "chunk_id": "D03-C01",
+      "quote": "完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。"
+    }
+  ],
+  "gaps": [],
+  "conflicts": [],
+  "support_certificates": [
+    {
+      "claim_index": 1,
+      "claim_text": "完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。",
+      "evidence_ids": [
+        "C1"
+      ],
+      "proof_methods": [
+        "verbatim_clause"
+      ],
+      "matched_source_clauses": [
+        "完成转正的正式员工可以申请远程办公；",
+        "试用期员工暂不适用远程办公安排。"
+      ],
+      "normalized_claim": "完成转正的正式员工可以申请远程办公;试用期员工暂不适用远程办公安排"
+    }
+  ],
+  "tool_calls": 2,
+  "decision_steps": 3,
+  "trace": {
+    "trace_version": "1.0",
+    "mode": "live_model",
+    "original_question": "那试用期员工呢？",
+    "standalone_query": "远程办公制度是否适用于试用期员工？",
+    "route": "knowledge_query",
+    "access_context": {
+      "departments": [
+        "public"
+      ],
+      "as_of_date": "2026-11-07"
+    },
+    "resolution_note": "结合历史中关于远程办公制度适用员工的提问，将“那试用期员工呢？”补全为对试用期员工适用性的独立查询。 历史上下文采用可溯源记忆检索，召回旧消息索引：[]。",
+    "history_context": {
+      "memory_strategy": "provenance_preserving_episodic_retrieval_v1",
+      "retrieved_message_indexes": [],
+      "recent_message_indexes": [
+        0,
+        1
+      ]
+    },
+    "limits": {
+      "max_decision_steps": 10,
+      "max_tool_calls": 8
+    },
+    "steps": [
+      {
+        "step": 1,
+        "action": "search_docs",
+        "arguments": {
+          "query": "远程办公制度 试用期员工 适用",
+          "top_k": 8
+        },
+        "rationale": "模型通过原生工具调用选择动作。",
+        "observation_summary": "找到 1 份候选: D03(0.758)",
+        "next_action": "read_doc",
+        "decision_steps_remaining": 9,
+        "tool_calls_remaining": 7
+      },
+      {
+        "step": 2,
+        "action": "read_doc",
+        "arguments": {
+          "document_id": "D03",
+          "chunk_id": "D03-C01"
+        },
+        "rationale": "模型通过原生工具调用选择动作。",
+        "observation_summary": "读取 D03/D03-C01: 完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。",
+        "next_action": "finish",
+        "decision_steps_remaining": 8,
+        "tool_calls_remaining": 6
+      },
+      {
+        "step": 3,
+        "action": "finish",
+        "arguments": {
+          "status": "completed",
+          "claims": [
+            {
+              "text": "完成转正的正式员工可以申请远程办公；试用期员工暂不适用远程办公安排。",
+              "evidence_ids": [
+                "E1"
+              ]
+            }
+          ],
+          "gaps": []
+        },
+        "rationale": "模型直接返回符合 finish schema 的终止对象。",
+        "observation_summary": "完成校验通过；1 条声明均生成逐句支持证书。",
+        "next_action": null,
+        "decision_steps_remaining": 7,
+        "tool_calls_remaining": 6
+      }
+    ],
+    "final_status": "completed",
+    "tool_calls_used": 2,
+    "decision_steps_used": 3,
+    "run_id": "run_543b559fb6db9ee5"
+  }
+}

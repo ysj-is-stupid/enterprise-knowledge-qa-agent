@@ -1,0 +1,95 @@
+{
+  "trace_version": "1.0",
+  "mode": "live_model",
+  "original_question": "设备借用申请条件是什么？",
+  "standalone_query": "设备借用申请条件是什么？",
+  "route": "knowledge_query",
+  "access_context": {
+    "departments": [
+      "public"
+    ],
+    "as_of_date": "2026-11-07"
+  },
+  "resolution_note": "无历史记录，问题独立完整，直接作为知识查询处理。 历史上下文采用可溯源记忆检索，召回旧消息索引：[]。",
+  "history_context": {
+    "memory_strategy": "provenance_preserving_episodic_retrieval_v1",
+    "retrieved_message_indexes": [],
+    "recent_message_indexes": []
+  },
+  "limits": {
+    "max_decision_steps": 10,
+    "max_tool_calls": 8
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "arguments": {
+        "query": "设备借用申请条件",
+        "top_k": 10
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "找到 2 份候选: D20(0.800), D21(0.800)",
+      "next_action": "read_doc",
+      "decision_steps_remaining": 9,
+      "tool_calls_remaining": 7
+    },
+    {
+      "step": 2,
+      "action": "read_doc",
+      "arguments": {
+        "document_id": "D20",
+        "chunk_id": "D20-C01"
+      },
+      "rationale": "模型返回 2 个并行工具调用；执行器按 ReAct 单步协议先执行第一个，其余动作需在观察结果后重新决策。",
+      "observation_summary": "读取 D20/D20-C01: 设备借用资格以关联资格标准为准。",
+      "next_action": "read_doc",
+      "decision_steps_remaining": 8,
+      "tool_calls_remaining": 6
+    },
+    {
+      "step": 3,
+      "action": "read_doc",
+      "arguments": {
+        "document_id": "D21",
+        "chunk_id": "D21-C01"
+      },
+      "rationale": "模型通过原生工具调用选择动作。",
+      "observation_summary": "读取 D21/D21-C01: 申请人须连续任职满6个月并完成安全培训。",
+      "next_action": "finish",
+      "decision_steps_remaining": 7,
+      "tool_calls_remaining": 5
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "arguments": {
+        "status": "completed",
+        "claims": [
+          {
+            "text": "设备借用资格以关联资格标准为准。",
+            "evidence_ids": [
+              "E1"
+            ]
+          },
+          {
+            "text": "申请人须连续任职满6个月并完成安全培训。",
+            "evidence_ids": [
+              "E2"
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "rationale": "模型直接返回符合 finish schema 的终止对象。",
+      "observation_summary": "完成校验通过；2 条声明均生成逐句支持证书。",
+      "next_action": null,
+      "decision_steps_remaining": 6,
+      "tool_calls_remaining": 5
+    }
+  ],
+  "final_status": "completed",
+  "tool_calls_used": 3,
+  "decision_steps_used": 4,
+  "run_id": "run_8f47c1091d9c6cc5"
+}

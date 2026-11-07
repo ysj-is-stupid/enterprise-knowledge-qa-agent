@@ -1,0 +1,6 @@
+{
+  "case_id": "cross-document-dependency",
+  "question": "设备借用申请条件是什么？",
+  "knowledge_base": "data/cross-document-dependencies.json",
+  "mode": "live"
+}

@@ -1,0 +1,6 @@
+{
+  "case_id": "context-follow-up",
+  "question": "那试用期员工呢？",
+  "history_file": "examples/inputs/context-history.json",
+  "mode": "offline"
+}
